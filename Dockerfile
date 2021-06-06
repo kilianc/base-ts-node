@@ -22,6 +22,8 @@ RUN yarn codegen
 
 FROM node:16.2.0-buster-slim as lint
 
+WORKDIR /opt/app
+
 COPY --from=devDependencies ["/opt/app", "./"]
 
 COPY ["tsconfig.json", ".eslintrc", ".prettierrc", ".prettierignore", "./"]

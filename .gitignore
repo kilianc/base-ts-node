@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.todo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+node_modules
+src/proto/*.js
+src/proto/*.ts

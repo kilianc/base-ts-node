@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.git
+.gitattributes
+.github
+.gitignore
+.nodemonrc
+.npmrc
+.vscode
+node_modules
+README.md
+src/proto/*.js
+src/proto/*.ts

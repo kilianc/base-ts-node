@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "watch": [
+    ".env",
+    "./src/**",
+    "./@types/**"
+  ],
+  "ext": "ts,json"
+}

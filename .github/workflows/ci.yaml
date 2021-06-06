@@ -20,3 +20,10 @@ jobs:
             --tag ${{ env.APP_NAME }}:${{ env.REVISION }} \
             --build-arg APP_NAME \
             --build-arg REVISION
+      - name: docker run
+        run: |
+          docker run \
+            --rm \
+            --env FOO=foo \
+            --env BAR=bar \
+            ${{ env.APP_NAME }}:${{ env.REVISION }}

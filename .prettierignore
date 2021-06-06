@@ -1,3 +1,2 @@
-.yarn
 src/proto/*.js
 src/proto/*.ts

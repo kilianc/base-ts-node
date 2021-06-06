@@ -1,0 +1,23 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  // VSCode will run prettier and eslint on save in a racey way.
+  // With current settings this has not been a problem,
+  // if the problem arises, read the guide below:
+  //   https://github.com/rohit-gohri/vscode-format-code-action#motivation
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+  "files.associations": {
+    ".nodemonrc": "json"
+  },
+  "cSpell.words": [
+    "arkweid",
+    "codegen",
+    "grpc",
+    "lefthook",
+    "loglevel",
+    "proto",
+    "protobuf",
+    "protoc"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "unicorn", "simple-import-sort", "import"],
+  "extends": [
+    // See https://github.com/standard/eslint-config-standard-with-typescript/blob/master/src/index.ts
+    // for the implementation details. Basically, it turns on all of the Standard JS rules using the
+    // TS-equivalent rule names (rules with "@typescript-eslint" prefixes). There are additional
+    // opinionated TS-specific rules added here too.
+    "standard-with-typescript",
+    "prettier"
+  ],
+  "ignorePatterns": ["src/proto/*"],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "simple-import-sort/imports": "error",
+    "import/newline-after-import": "error",
+    "import/first": "error",
+    "unicorn/filename-case": ["error", { "case": "kebabCase" }],
+    "no-void": ["error", { "allowAsStatement": true }]
+  }
+}

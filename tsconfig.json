@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "noEmit": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ES2020"
+  },
+  "include": ["src", "@types"],
+  "ts-node": {
+    "transpileOnly": true
+  }
+}

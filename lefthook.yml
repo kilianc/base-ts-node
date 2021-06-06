@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: '*.{ts,json,yaml,yml,md}'
+      run: yarn prettier --loglevel warn --check {staged_files}
+    eslint:
+      glob: '*.{ts}'
+      run: yarn eslint {staged_files}
+    tsc:
+      run: yarn tsc -p ./tsconfig.json

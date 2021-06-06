@@ -5,12 +5,6 @@
 !.vscode/extensions.json
 !.vscode/launch.json
 !.vscode/settings.json
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/cache
 node_modules
 src/proto/*.js
 src/proto/*.ts
-yarn-error.log

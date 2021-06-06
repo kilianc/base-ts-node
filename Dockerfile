@@ -2,10 +2,9 @@ FROM node:16.2.0-buster-slim as devDependencies
 
 WORKDIR /opt/app
 
-COPY ["package.json", "yarn.lock", ".yarnrc.yml", "./"]
-COPY [".yarn", ".yarn"]
+COPY ["package.json", "package-lock.json", "./"]
 
-RUN yarn install --immutable --immutable-cache
+RUN npm ci
 
 # --
 
@@ -16,7 +15,7 @@ WORKDIR /opt/app
 COPY --from=devDependencies ["/opt/app", "./"]
 COPY ["src/proto", "src/proto"]
 
-RUN yarn codegen
+RUN npm run codegen
 
 # --
 
@@ -30,7 +29,7 @@ COPY ["tsconfig.json", ".eslintrc", ".prettierrc", ".prettierignore", "./"]
 COPY ["@types", "@types"]
 COPY ["src", "src"]
 
-RUN yarn lint
+RUN npm run lint
 
 # --
 
@@ -40,9 +39,7 @@ WORKDIR /opt/app
 
 COPY --from=devDependencies ["/opt/app", "./"]
 
-RUN \
-  yarn workspaces focus --production && \
-  yarn cache clean
+RUN npm prune --production
 
 # --
 

@@ -5,7 +5,6 @@
 .github
 .gitignore
 .nodemonrc
-.npmrc
 .vscode
 node_modules
 README.md

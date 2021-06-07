@@ -24,6 +24,7 @@ if (process.env.FOO == null || process.env.BAR == null) {
 export const config = {
   APP_NAME: process.env.APP_NAME,
   REVISION: process.env.REVISION,
+  EXIT_SIGNALS: ['SIGINT', 'SIGTERM'],
   LOG_INDENT: parseInt(process.env.LOG_INDENT ?? '', 10) ?? 0,
   FOO: process.env.FOO,
   BAR: process.env.BAR

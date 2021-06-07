@@ -1,4 +1,9 @@
-FROM node:16.2.0-buster-slim as devDependencies
+FROM node:16.3.0-alpine3.13 as base
+
+WORKDIR /opt/app
+COPY [".npmrc", "./"]
+
+FROM base as dev_dependencies
 
 WORKDIR /opt/app
 
@@ -8,42 +13,46 @@ RUN npm ci
 
 # --
 
-FROM node:16.2.0-buster-slim as codegen
+FROM base as codegen
 
 WORKDIR /opt/app
 
-COPY --from=devDependencies ["/opt/app", "./"]
+COPY --from=dev_dependencies ["/opt/app", "./"]
 COPY ["src/proto", "src/proto"]
 
 RUN npm run codegen
 
 # --
 
-FROM node:16.2.0-buster-slim as lint
+FROM base as test
 
 WORKDIR /opt/app
 
-COPY --from=devDependencies ["/opt/app", "./"]
+COPY --from=dev_dependencies ["/opt/app", "./"]
+COPY --from=codegen ["/opt/app/src/proto", "src/proto"]
 
-COPY ["tsconfig.json", ".eslintrc", ".prettierrc", ".prettierignore", "./"]
+COPY ["tsconfig.json", "jest.config.js", ".eslintrc", ".prettierrc", ".prettierignore", "./"]
 COPY ["@types", "@types"]
 COPY ["src", "src"]
 
 RUN npm run lint
+RUN npm run test
+
+RUN echo 'ok' > .tested
 
 # --
 
-FROM node:16.2.0-buster-slim as dependencies
+FROM base as prod_dependencies
 
 WORKDIR /opt/app
 
-COPY --from=devDependencies ["/opt/app", "./"]
+COPY --from=dev_dependencies ["/opt/app", "./"]
 
 RUN npm prune --production
 
 # --
 
-FROM node:16.3.0-alpine3.13 as final
+FROM base as final
 
 ARG APP_NAME
 ENV APP_NAME $APP_NAME
@@ -57,11 +66,12 @@ ENV PATH $PATH:/opt/app/node_modules/.bin
 
 WORKDIR /opt/app
 
-COPY --from=dependencies ["/opt/app/node_modules", "node_modules"]
+COPY --from=prod_dependencies ["/opt/app/node_modules", "node_modules"]
 COPY --from=codegen ["/opt/app/src/proto", "src/proto"]
+COPY --from=test ["/opt/app/.tested", "/dev/null"]
 
 COPY ["@types", "@types"]
 COPY ["src", "src"]
-COPY ["tsconfig.json", "./"]
+COPY ["tsconfig.json", ".npmrc", "./"]
 
 CMD ["ts-node", "src/index.ts"]

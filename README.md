@@ -4,7 +4,7 @@
 
     $ npm ci                   # install dependencies
     $ npm run lefthook install # install git hooks
-    $ npm run codegen          # generate gRPC clients
+    $ npm run codegen          # generate gRPC types
     $ npm run start:watch      # starts the app in live reload mode
 
 ## VSCode Settings

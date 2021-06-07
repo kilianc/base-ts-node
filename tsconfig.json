@@ -4,6 +4,7 @@
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "noEmit": true,
+    "noImplicitAny": true,
     "outDir": "dist",
     "skipLibCheck": true,
     "sourceMap": true,

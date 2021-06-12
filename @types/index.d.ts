@@ -1,6 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
+      CI: ?string
       APP_NAME: string
       REVISION: string
       LOG_INDENT: ?string

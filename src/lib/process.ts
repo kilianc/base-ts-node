@@ -1,3 +1,4 @@
+import { config } from './config'
 import { logger } from './logger'
 
 const onUncaughtException = (err: Error) => {
@@ -19,7 +20,7 @@ process.on('warning', (warning: Error) => {
   logger.warn({ warning })
 })
 
-for (const exitSignal of ['SIGINT', 'SIGTERM']) {
+for (const exitSignal of config.EXIT_SIGNALS) {
   process.on(exitSignal, () => {
     logger.info(`${exitSignal} received, shutting down...`)
     // cleanup code goes here

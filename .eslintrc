@@ -10,20 +10,34 @@
   },
   "plugins": ["@typescript-eslint", "unicorn", "simple-import-sort", "import"],
   "extends": [
-    // See https://github.com/standard/eslint-config-standard-with-typescript/blob/master/src/index.ts
-    // for the implementation details. Basically, it turns on all of the Standard JS rules using the
-    // TS-equivalent rule names (rules with "@typescript-eslint" prefixes). There are additional
-    // opinionated TS-specific rules added here too.
+    "eslint:recommended",
+    "plugin:@typescript-eslint/all",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
     "standard-with-typescript",
     "prettier"
   ],
   "ignorePatterns": ["src/proto/*", "jest.config.js"],
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
-    "simple-import-sort/imports": "error",
-    "import/newline-after-import": "error",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-magic-numbers": "off",
+    "@typescript-eslint/no-type-alias": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/unbound-method": "off",
     "import/first": "error",
+    "import/newline-after-import": "error",
+    "no-void": ["error", { "allowAsStatement": true }],
+    "promise/always-return": "off",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+    "unicorn/catch-error-name": "off",
     "unicorn/filename-case": ["error", { "case": "kebabCase" }],
-    "no-void": ["error", { "allowAsStatement": true }]
+    "unicorn/no-null": "off",
+    "unicorn/no-process-exit": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-node-protocol": "off",
+    "unicorn/prevent-abbreviations": "off"
   }
 }

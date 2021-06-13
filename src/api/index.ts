@@ -1,4 +1,4 @@
-import { GreeterHandlers } from '../proto/Greeter'
+import type { GreeterHandlers } from '../proto/Greeter'
 
 export const greeterHandlers: GreeterHandlers = {
   SayHello: (call, reply) => {

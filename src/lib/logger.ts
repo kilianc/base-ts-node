@@ -10,12 +10,11 @@ const stdout = new SonicBoom({ fd: process.stdout.fd })
 
 let indent = 0
 let minLogLevelIndex = logLevels.indexOf('info')
-let name: string | undefined
 
 const createLogFunction = (level: Levels) => {
   const logLevelIndex = logLevels.indexOf(level)
 
-  return (data: string | object) => {
+  return (data: Record<string, unknown> | string) => {
     if (logLevelIndex < minLogLevelIndex) return
 
     const normalizedData = typeof data === 'string' ? { message: data } : data
@@ -26,8 +25,7 @@ const createLogFunction = (level: Levels) => {
           ...normalizedData,
           app: config.APP_NAME,
           revision: config.REVISION,
-          severity: level,
-          name
+          severity: level
         },
         undefined,
         indent
@@ -41,7 +39,6 @@ export const logger = {
   info: createLogFunction('info'),
   warn: createLogFunction('warn'),
   error: createLogFunction('error'),
-  setName: (_name: string) => (name = _name),
   setLevel: (level: Levels) => (minLogLevelIndex = logLevels.indexOf(level)),
   getLevel: () => logLevels[minLogLevelIndex],
   setIndent: (_indent: number) => (indent = _indent)

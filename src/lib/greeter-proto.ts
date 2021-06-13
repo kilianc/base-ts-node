@@ -1,6 +1,6 @@
 import { resolve } from 'path/posix'
 
-import { ProtoGrpcType } from '../proto/greeter_api'
+import type { ProtoGrpcType } from '../proto/greeter_api'
 import { loadProto } from './load-proto'
 
 const protoFilePath = resolve(__dirname, '..', 'proto', 'greeter_api.proto')

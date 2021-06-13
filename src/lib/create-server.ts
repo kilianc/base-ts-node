@@ -9,9 +9,9 @@ export const createServer = () => {
   const listen = createListen(server)
   const close = createClose(server)
 
-  config.EXIT_SIGNALS.forEach((exitSignal) => {
+  for (const exitSignal of config.EXIT_SIGNALS) {
     process.on(exitSignal, close)
-  })
+  }
 
   return { server, close, listen }
 }
@@ -26,7 +26,7 @@ export const createListen = (server: Server) => async (address: string) => {
 export const createClose = (server: Server) => () => {
   logger.info(`shutting down gRPC server`)
   const tryShutdown = promisify(server.tryShutdown).bind(server)
-  tryShutdown().catch((err) => {
+  tryShutdown().catch((err: Error) => {
     logger.error({ err })
     server.forceShutdown()
   })

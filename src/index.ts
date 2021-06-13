@@ -27,7 +27,7 @@ main()
     if (process.env.CI == null) return
     process.emit('SIGINT', 'SIGINT')
   })
-  .catch((err) => {
+  .catch((err: Error) => {
     console.error(err)
     process.exit(1)
   })

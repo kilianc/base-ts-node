@@ -1,7 +1,7 @@
 import { credentials } from '@grpc/grpc-js'
 
-import { GreeterClient } from '../proto/Greeter'
-import { HelloReply__Output } from '../proto/HelloReply'
+import type { GreeterClient } from '../proto/Greeter'
+import type { HelloReply__Output } from '../proto/HelloReply'
 import { proto } from './greeter-proto'
 
 export const createClient = (address: string) => {

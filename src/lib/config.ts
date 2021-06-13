@@ -21,11 +21,16 @@ if (process.env.FOO == null || process.env.BAR == null) {
   process.exit(1)
 }
 
+const tryParseInt = (n: string | null | undefined, fallback: number) => {
+  const parsed = Number.parseInt(n ?? '', 10)
+  return Number.isNaN(parsed) ? fallback : parsed
+}
+
 export const config = {
   APP_NAME: process.env.APP_NAME,
   REVISION: process.env.REVISION,
   EXIT_SIGNALS: ['SIGINT', 'SIGTERM'],
-  LOG_INDENT: parseInt(process.env.LOG_INDENT ?? '', 10) ?? 0,
+  LOG_INDENT: tryParseInt(process.env.LOG_INDENT, 0),
   FOO: process.env.FOO,
   BAR: process.env.BAR
 }

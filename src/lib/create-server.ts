@@ -16,18 +16,25 @@ export const createServer = () => {
   return { server, close, listen }
 }
 
-export const createListen = (server: Server) => async (address: string) => {
+export const createListen = (server: Server) => {
   const bind = promisify(server.bindAsync).bind(server)
-  const port: number = await bind(address, ServerCredentials.createInsecure())
-  server.start()
-  logger.info(`gRPC server listening on port ${port}`)
+
+  return async (address: string) => {
+    const port: number = await bind(address, ServerCredentials.createInsecure())
+    server.start()
+    logger.info(`gRPC server listening on port ${port}`)
+  }
 }
 
-export const createClose = (server: Server) => () => {
-  logger.info(`shutting down gRPC server`)
+export const createClose = (server: Server) => {
   const tryShutdown = promisify(server.tryShutdown).bind(server)
-  tryShutdown().catch((err: Error) => {
-    logger.error({ err })
-    server.forceShutdown()
-  })
+
+  return () => {
+    logger.info(`shutting down gRPC server`)
+
+    tryShutdown().catch((err: Error) => {
+      logger.error({ err })
+      server.forceShutdown()
+    })
+  }
 }

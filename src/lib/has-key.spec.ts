@@ -24,6 +24,7 @@ describe('hasKey(o, k)', () => {
 
   test('should correctly narrow types when `key: number`', () => {
     const key = 1 as number
+
     // @ts-expect-error key is not narrowed
     let value: 1 | 2 = key
 

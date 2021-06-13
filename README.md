@@ -1,11 +1,29 @@
 # TypeScript Node Base Project
 
-## Install
+## Install and first run
 
     $ npm ci                   # install dependencies
-    $ npm run lefthook install # install git hooks
+    $ npm run lefthook-install # install git hooks
     $ npm run codegen          # generate gRPC types
-    $ npm run start:watch      # starts the app in live reload mode
+    $ npm test                 # run test suite
+
+Create a local `.env` file
+
+```sh
+FOO=foo
+BAR=bar
+```
+
+    $ npm run start:watch      # starts the app in watch mode
+
+You can also test the docker build
+
+    $ npm run docker:build
+    $ npm run docker:run
+
+Or simply
+
+    $ npm run docker
 
 ## VSCode Settings
 

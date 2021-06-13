@@ -37,11 +37,12 @@
     "codegen": "./src/proto/codegen.sh",
     "lint:fix": "tsc -p ./tsconfig.json && prettier --loglevel warn --write . && eslint . --fix",
     "lint": "tsc -p ./tsconfig.json && prettier --loglevel warn --check . && eslint .",
+    "lefthook-install": "lefthook install",
     "start": "NODE_OPTIONS=--unhandled-rejections=strict ts-node --cwd-mode src/index.ts",
     "start:watch": "NODE_OPTIONS=--unhandled-rejections=strict nodemon --config .nodemonrc src/index.ts",
     "start:debug": "NODE_OPTIONS=--unhandled-rejections=strict node -r ts-node/register/transpile-only --inspect=0.0.0.0 src/index.ts",
-    "docker": "npm run docker:build && yarn docker:run",
-    "docker:build": "docker build -t ts-template:local .",
+    "docker": "npm run docker:build && npm run docker:run",
+    "docker:build": "docker build --progress=plain -t ts-template:local .",
     "docker:run": "docker run --rm -it --env-file=.env ts-template:local",
     "test": "jest"
   }

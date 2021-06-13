@@ -14,6 +14,8 @@ FOO=foo
 BAR=bar
 ```
 
+Now you are ready to go
+
     $ npm run start:watch      # starts the app in watch mode
 
 You can also test the docker build

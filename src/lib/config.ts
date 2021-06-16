@@ -3,21 +3,24 @@ import { config as loadDotEnvIfPresent } from 'dotenv'
 
 loadDotEnvIfPresent()
 
+const errors = []
+
 if (process.env.FOO == null) {
-  console.error(s`
+  errors.push(s`
     error: missing required env "FOO=******"
            see "https://hot-to-get-foo-link"
   `)
 }
 
 if (process.env.BAR == null) {
-  console.error(s`
+  errors.push(s`
     error: missing required env "BAR=******"
            see "https://hot-to-get-bar-link"
   `)
 }
 
-if (process.env.FOO == null || process.env.BAR == null) {
+if (errors.length > 0) {
+  console.error(errors.join('\n\n'))
   process.exit(1)
 }
 

@@ -13,7 +13,7 @@
     "fast-safe-stringify": "2.0.7",
     "sonic-boom": "2.0.1",
     "ts-node": "10.1.0",
-    "typescript": "4.3.2"
+    "typescript": "4.3.5"
   },
   "devDependencies": {
     "@arkweid/lefthook": "0.7.6",

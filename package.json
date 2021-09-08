@@ -11,7 +11,7 @@
     "common-tags": "1.8.0",
     "dotenv": "10.0.0",
     "fast-safe-stringify": "2.0.8",
-    "sonic-boom": "2.1.0",
+    "sonic-boom": "2.2.2",
     "ts-node": "10.2.1",
     "typescript": "4.3.5"
   },

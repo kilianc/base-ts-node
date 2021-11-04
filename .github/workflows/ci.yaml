@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request_target:
     branches:
       - '*'
 env:
@@ -28,3 +28,13 @@ jobs:
             --env FOO=foo \
             --env BAR=bar \
             ${{ env.APP_NAME }}:${{ env.REVISION }}
+      - uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.AUTO_MERGE_TOKEN }}
+  automerge:
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.AUTO_MERGE_TOKEN }}

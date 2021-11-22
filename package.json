@@ -8,7 +8,7 @@
     "@grpc/proto-loader": "0.6.6",
     "@types/common-tags": "1.8.1",
     "@types/node": "16.11.6",
-    "common-tags": "1.8.0",
+    "common-tags": "1.8.2",
     "dotenv": "10.0.0",
     "fast-safe-stringify": "2.1.1",
     "sonic-boom": "2.3.0",

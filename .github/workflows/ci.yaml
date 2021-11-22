@@ -1,19 +1,21 @@
-name: ci-cd
+name: ci
 on:
   push:
     branches:
       - master
-  pull_request:
+  pull_request_target:
     branches:
       - '*'
 env:
   APP_NAME: base-ts-node
-  REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+  REVISION: ${{ github.event.pull_request.head.sha }}
 jobs:
   docker-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: docker build
         run: |
           docker build . \

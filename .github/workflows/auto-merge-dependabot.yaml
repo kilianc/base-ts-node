@@ -1,5 +1,8 @@
 name: auto-merge-dependabot
 on: [pull_request_target]
+env:
+  PR_URL: ${{ github.event.pull_request.html_url }}
+  github-token: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   auto-merge-dependabot:
     runs-on: ubuntu-latest
@@ -7,9 +10,5 @@ jobs:
     steps:
       - name: auto-merge
         run: gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: hmarr/auto-approve-action@v2.0.0
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: auto-approve
+        run: gh pr review --approve "$PR_URL"

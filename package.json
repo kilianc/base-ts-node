@@ -4,7 +4,7 @@
     "node": ">= 16"
   },
   "dependencies": {
-    "@grpc/grpc-js": "1.6.7",
+    "@grpc/grpc-js": "1.6.8",
     "@grpc/proto-loader": "0.6.13",
     "@types/common-tags": "1.8.1",
     "@types/node": "18.0.0",

@@ -30,7 +30,7 @@
     "eslint-plugin-unicorn": "40.1.0",
     "jest": "27.5.1",
     "nodemon": "3.0.1",
-    "prettier": "2.8.1",
+    "prettier": "3.0.0",
     "ts-jest": "27.1.4"
   },
   "scripts": {

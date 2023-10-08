@@ -42,7 +42,7 @@
     "start:watch": "NODE_OPTIONS=--unhandled-rejections=strict nodemon --config .nodemonrc src/index.ts",
     "start:debug": "NODE_OPTIONS=--unhandled-rejections=strict node -r ts-node/register/transpile-only --inspect=0.0.0.0 src/index.ts",
     "docker": "npm run docker:build && npm run docker:run",
-    "docker:build": "docker build --progress=plain -t ts-template:local .",
+    "docker:build": "docker build -t ts-template:local .",
     "docker:run": "docker run --rm -it --env-file=.env ts-template:local",
     "test": "jest"
   }

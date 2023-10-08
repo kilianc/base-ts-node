@@ -3,7 +3,7 @@ import SonicBoom from 'sonic-boom'
 
 import { config } from './config'
 
-export type Levels = typeof logLevels[number]
+export type Levels = (typeof logLevels)[number]
 export const logLevels = ['debug', 'info', 'warn', 'error'] as const
 
 const stdout = new SonicBoom({ fd: process.stdout.fd })

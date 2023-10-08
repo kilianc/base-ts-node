@@ -11,8 +11,8 @@
     ".nodemonrc": "json"
   },
   "cSpell.words": [
-    "arkweid",
     "codegen",
+    "evilmartians",
     "grpc",
     "lefthook",
     "loglevel",

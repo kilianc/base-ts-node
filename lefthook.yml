@@ -3,9 +3,9 @@ pre-commit:
   commands:
     prettier:
       glob: '*.{ts,json,yaml,yml,md}'
-      run: node_modules/.bin/prettier --log-level warn --check {staged_files}
+      run: npx prettier --log-level warn --check {staged_files}
     eslint:
       glob: '*.{ts}'
-      run: node_modules/.bin/eslint {staged_files}
+      run: npx eslint {staged_files}
     tsc:
-      run: node_modules/.bin/tsc -p ./tsconfig.json
+      run: npx tsc -p ./tsconfig.json

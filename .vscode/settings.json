@@ -16,6 +16,7 @@
     "grpc",
     "lefthook",
     "loglevel",
+    "nodemonrc",
     "proto",
     "protobuf",
     "protoc"

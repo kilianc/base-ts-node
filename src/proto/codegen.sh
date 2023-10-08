@@ -3,7 +3,7 @@
 set -e
 
 proto_dir="src/proto"
-npm_bin=$(npm bin)
+npm_bin="node_modules/.bin"
 
 rm -rf -- \
   "${proto_dir:?}"/*.ts \

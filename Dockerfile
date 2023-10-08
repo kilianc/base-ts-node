@@ -1,7 +1,9 @@
-FROM node:16.3.0-alpine3.13 as base
+FROM node:20.8.0-alpine3.18 as base
 
 WORKDIR /opt/app
 COPY [".npmrc", "./"]
+
+# --
 
 FROM base as dev_dependencies
 
@@ -48,7 +50,7 @@ WORKDIR /opt/app
 
 COPY --from=dev_dependencies ["/opt/app", "./"]
 
-RUN npm prune --production
+RUN npm prune --omit=dev
 
 # --
 

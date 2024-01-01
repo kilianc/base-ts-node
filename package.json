@@ -12,7 +12,7 @@
     "dotenv": "16.3.1",
     "fast-safe-stringify": "2.1.1",
     "sonic-boom": "3.7.0",
-    "ts-node": "10.9.1"
+    "ts-node": "10.9.2"
   },
   "devDependencies": {
     "@evilmartians/lefthook": "1.5.5",

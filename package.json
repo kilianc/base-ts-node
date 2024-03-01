@@ -9,7 +9,7 @@
     "@types/common-tags": "1.8.4",
     "@types/node": "20.11.24",
     "common-tags": "1.8.2",
-    "dotenv": "16.4.1",
+    "dotenv": "16.4.5",
     "fast-safe-stringify": "2.1.1",
     "sonic-boom": "3.8.0",
     "ts-node": "10.9.2"

@@ -7,7 +7,7 @@
     "@grpc/grpc-js": "1.10.9",
     "@grpc/proto-loader": "0.7.13",
     "@types/common-tags": "1.8.4",
-    "@types/node": "20.13.0",
+    "@types/node": "20.14.9",
     "common-tags": "1.8.2",
     "dotenv": "16.4.5",
     "fast-safe-stringify": "2.1.1",

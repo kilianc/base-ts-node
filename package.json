@@ -15,7 +15,7 @@
     "ts-node": "10.9.2"
   },
   "devDependencies": {
-    "@evilmartians/lefthook": "1.10.1",
+    "@evilmartians/lefthook": "1.11.2",
     "@types/jest": "29.5.14",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
